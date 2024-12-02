@@ -29,7 +29,7 @@ func main() {
 			list = append(list, intDigit)
 		}
 
-		if isSafeReport(list) {
+		if isSafeReport(list) || isSafeDampened(list) {
 			totalSafe++
 		}
 
@@ -60,4 +60,15 @@ func isSafeReport(list []int) bool {
 	}
 
 	return isIncreasing || isDecreasing
+}
+
+func isSafeDampened(list []int) bool {
+	for i := 0; i < len(list); i++ {
+		newList := append([]int{}, list[:i]...)
+		newList = append(newList, list[i+1:]...)
+		if isSafeReport(newList) {
+			return true
+		}
+	}
+	return false
 }

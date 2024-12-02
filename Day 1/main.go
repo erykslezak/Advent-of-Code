@@ -49,4 +49,21 @@ func main() {
 	}
 
 	fmt.Println(total)
+	fmt.Println(multi(list1, list2))
+}
+
+func multi(l1 []int, l2 []int) int {
+	mulTotal := 0
+	for _, i := range l1 {
+		counter := 0
+		for _, x := range l2 {
+			if i == x {
+				counter += 1
+			}
+		}
+
+		mulTotal += i * counter
+	}
+
+	return mulTotal
 }
